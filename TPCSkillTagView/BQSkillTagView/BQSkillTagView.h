@@ -86,8 +86,8 @@
 
 @interface BQSkillTagReusableView : UICollectionReusableView
 {
-    UILabel *_tipLabel;
-    UILabel *_typeLabel;
+    __weak UILabel *_tipLabel;
+    __weak UILabel *_typeLabel;
 }
 @property (assign, nonatomic) UIEdgeInsets contentInset;
 @property (weak, nonatomic) UIButton *typeButton;
@@ -100,8 +100,8 @@
 
 @interface BQSkillTagViewCell : UICollectionViewCell
 {
-    UILabel *_nameLabel;
-    UIImageView *_maskImageView;
+    __weak UILabel *_nameLabel;
+    __weak UIImageView *_maskImageView;
 }
 @property (strong, nonatomic) BQSkillTag *skillTag;
 @property (assign, nonatomic) BOOL availableSkillType;

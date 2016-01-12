@@ -10,12 +10,13 @@
 #import "UICollectionViewLeftAlignedLayout.h"
 #import "BQSkillTag.h"
 #import "UIColor+Extend.h"
-#import "NSString+Extension.h"
+#import "NSString+Draw.h"
 
 #define BQSkillTagViewHeaderH 30
+#define BQSkillTagViewFooterH 40
 @interface BQSkillTagView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
-    UICollectionView *_collectionView;
+    __weak UICollectionView *_collectionView;
     NSMutableArray<NSMutableArray *> *_allSkillTags;
 }
 @property (strong, nonatomic) BQSkillTag *lastSkillTag;;
@@ -25,14 +26,15 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         UICollectionViewLeftAlignedLayout *leftAlignedLayout = [[UICollectionViewLeftAlignedLayout alloc] init];
-        _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:leftAlignedLayout];
-        _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-        [_collectionView registerClass:[BQSkillTagViewCell class] forCellWithReuseIdentifier:NSStringFromClass([BQSkillTagViewCell class])];
-        [_collectionView registerClass:[BQSkillTagReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([BQSkillTagReusableView class])];
-        _collectionView.backgroundColor = [UIColor whiteColor];
-        _collectionView.alwaysBounceVertical = YES;
-        [self addSubview:_collectionView];
+        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:leftAlignedLayout];
+        collectionView.delegate = self;
+        collectionView.dataSource = self;
+        [collectionView registerClass:[BQSkillTagViewCell class] forCellWithReuseIdentifier:NSStringFromClass([BQSkillTagViewCell class])];
+        [collectionView registerClass:[BQSkillTagReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([BQSkillTagReusableView class])];
+        collectionView.backgroundColor = [UIColor whiteColor];
+        collectionView.alwaysBounceVertical = YES;
+        [self addSubview:collectionView];
+        _collectionView = collectionView;
         self.backgroundColor = [UIColor clearColor];
         _allSkillTags = [NSMutableArray array];
     }
@@ -46,8 +48,8 @@
         return;
     }
     // Avoiding that there are many same skllTag, then it will remove all and crash
-    [_allSkillTags.firstObject removeObjectAtIndex:[_allSkillTags.firstObject indexOfObject:skillTag]];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:_allSkillTags.firstObject.count inSection:section];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_allSkillTags[section] indexOfObject:skillTag] inSection:section];
+    [_allSkillTags[section] removeObjectAtIndex:[_allSkillTags[section] indexOfObject:skillTag]];
     [_collectionView deleteItemsAtIndexPaths:@[indexPath]];
 }
 
@@ -55,10 +57,10 @@
     if (section < 0 || section > _allSkillTags.count - 1) { return; }
     NSIndexPath *indexPath = nil;
     if (_showAddSkillTag) {
-        [_allSkillTags.firstObject insertObject:skillTag atIndex:_allSkillTags.firstObject.count - 1];
+        [_allSkillTags[section] insertObject:skillTag atIndex:_allSkillTags[section].count - 1];
         indexPath = [NSIndexPath indexPathForItem:_allSkillTags[section].count - 2 inSection:section];
     } else {
-        [_allSkillTags.firstObject addObject:skillTag];
+        [_allSkillTags[section] addObject:skillTag];
         indexPath = [NSIndexPath indexPathForItem:_allSkillTags[section].count - 1 inSection:section];
     }
     [_collectionView insertItemsAtIndexPaths:@[indexPath]];
@@ -93,14 +95,18 @@
 }
 
 - (void)setAvailableSkillTags:(NSMutableArray<BQSkillTag *> *)availableSkillTags {
-    [_allSkillTags removeObject:_availableSkillTags];
+    if ([_allSkillTags containsObject:_availableSkillTags]) {
+        [_allSkillTags removeObjectAtIndex:[_allSkillTags indexOfObject:_availableSkillTags]];
+    }
     _availableSkillTags = availableSkillTags;
     [_allSkillTags addObject:availableSkillTags];
     [_collectionView reloadData];
 }
 
 - (void)setSkillTags:(NSMutableArray<BQSkillTag *> *)skillTags {
-    [_allSkillTags removeObject:_skillTags];
+    if ([_allSkillTags containsObject:_skillTags]) {
+        [_allSkillTags removeObjectAtIndex:[_allSkillTags indexOfObject:_skillTags]];
+    }
     _skillTags = skillTags;
     [_allSkillTags insertObject:skillTags atIndex:0];
     [_collectionView reloadData];
@@ -150,7 +156,7 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     BQSkillTagReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([BQSkillTagReusableView class]) forIndexPath:indexPath];
-    if (_skillTagsHeaderString.length || _availableSkillTagsHeaderString.length) {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader] && (_skillTagsHeaderString.length || _availableSkillTagsHeaderString.length)) {
         if (_skillTagsHeaderString.length && indexPath.section == 0) {
             view.tipName = _skillTagsHeaderString;
             view.showType = NO;
@@ -166,8 +172,12 @@
         }
         view.bounds = CGRectMake(0, 0, collectionView.bounds.size.width, BQSkillTagViewHeaderH);
         view.contentInset = _contentInset;
+        view.hidden = NO;
+        return view;
+    } else {
+        view.hidden = YES;
+        return view;
     }
-    return view;
 }
 
 #pragma mark UICollectionViewDelegate
@@ -194,6 +204,13 @@
     return CGSizeZero;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    if (_skillTagsHeaderString.length && section == 0) {
+        return CGSizeMake(collectionView.bounds.size.width, BQSkillTagViewFooterH);
+    }
+    return CGSizeZero;
+}
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(10, _contentInset.left, 10, _contentInset.right);
 }
@@ -209,17 +226,19 @@
 @implementation BQSkillTagReusableView
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _tipLabel = [[UILabel alloc] init];
-        _tipLabel.textAlignment = NSTextAlignmentLeft;
-        _tipLabel.font = [UIFont boldSystemFontOfSize:14.0];
-        _tipLabel.textColor = [UIColor colorWithHex:0x666666];
-        [self addSubview:_tipLabel];
+        UILabel *tipLabel = [[UILabel alloc] init];
+        tipLabel.textAlignment = NSTextAlignmentLeft;
+        tipLabel.font = [UIFont boldSystemFontOfSize:14.0];
+        tipLabel.textColor = [UIColor colorWithHex:0x666666];
+        [self addSubview:tipLabel];
+        _tipLabel = tipLabel;
         
-        _typeLabel = [[UILabel alloc] init];
-        _typeLabel.textAlignment = NSTextAlignmentRight;
-        _typeLabel.font = [UIFont systemFontOfSize:14.0];
-        _typeLabel.textColor = [UIColor colorWithHex:0x333333];
-        [self addSubview:_typeLabel];
+        UILabel *typeLabel = [[UILabel alloc] init];
+        typeLabel.textAlignment = NSTextAlignmentRight;
+        typeLabel.font = [UIFont systemFontOfSize:14.0];
+        typeLabel.textColor = [UIColor colorWithHex:0x333333];
+        [self addSubview:typeLabel];
+        _typeLabel = typeLabel;
         
         self.backgroundColor = [UIColor clearColor];
     }
@@ -301,14 +320,16 @@
 @implementation BQSkillTagViewCell
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _maskImageView = [[UIImageView alloc] init];
-        [self.contentView addSubview:_maskImageView];
+        UIImageView *maskImageView = [[UIImageView alloc] init];
+        [self.contentView addSubview:maskImageView];
+        _maskImageView = maskImageView;
         
-        _nameLabel = [[UILabel alloc] init];
-        _nameLabel.textAlignment = NSTextAlignmentCenter;
-        _nameLabel.font = BQSkillTagFont;
-        _nameLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_nameLabel];
+        UILabel *nameLabel = [[UILabel alloc] init];
+        nameLabel.textAlignment = NSTextAlignmentCenter;
+        nameLabel.font = BQSkillTagFont;
+        nameLabel.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:nameLabel];
+        _nameLabel = nameLabel;
         
         self.backgroundColor = [UIColor clearColor];
     }
@@ -379,7 +400,6 @@
     
     BQSkillTag *skillTag = _skillTag;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        UIGraphicsBeginImageContextWithOptions(self.contentView.bounds.size, NO, 0);
         UIImage *contentImage = [self createImageWithSelected:_skillTag.selected];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (skillTag == _skillTag) {

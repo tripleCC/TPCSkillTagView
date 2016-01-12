@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NSString (Extension)
+@interface NSString (Draw)
 - (void)drawInContext:(CGContextRef)context withPosition:(CGPoint)p andFont:(UIFont *)font andTextColor:(UIColor *)color andHeight:(float)height andWidth:(float)width;
 - (void)drawInContext:(CGContextRef)context withFrame:(CGRect)frame andFont:(UIFont *)font andTextColor:(UIColor *)textColor;
 @end

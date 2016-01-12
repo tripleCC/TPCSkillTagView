@@ -6,9 +6,9 @@
 //  Copyright © 2016年 tripleCC. All rights reserved.
 //
 #import <CoreText/CoreText.h>
-#import "NSString+Extension.h"
+#import "NSString+Draw.h"
 
-@implementation NSString (Extension)
+@implementation NSString (Draw)
 - (void)drawInContext:(CGContextRef)context withFrame:(CGRect)frame andFont:(UIFont *)font andTextColor:(UIColor *)textColor {
     [self drawInContext:context withPosition:frame.origin andFont:font andTextColor:textColor andHeight:frame.size.height andWidth:frame.size.width];
 }
