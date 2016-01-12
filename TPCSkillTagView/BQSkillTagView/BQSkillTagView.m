@@ -96,7 +96,7 @@
 
 - (void)setAvailableSkillTags:(NSMutableArray<BQSkillTag *> *)availableSkillTags {
     if ([_allSkillTags containsObject:_availableSkillTags]) {
-        [_allSkillTags removeObjectAtIndex:[_allSkillTags indexOfObject:_availableSkillTags]];
+        [_allSkillTags removeObjectAtIndex:_allSkillTags.count - 1];
     }
     _availableSkillTags = availableSkillTags;
     [_allSkillTags addObject:availableSkillTags];
@@ -149,6 +149,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BQSkillTagViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([BQSkillTagViewCell class]) forIndexPath:indexPath];
+    cell.maskImage = nil;
     cell.skillTag = _allSkillTags[indexPath.section][indexPath.item];
     cell.availableSkillType = indexPath.section != 0;
     return cell;
