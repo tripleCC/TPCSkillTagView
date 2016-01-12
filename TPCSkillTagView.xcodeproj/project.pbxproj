@@ -1,0 +1,355 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D61F93041C4478A100507A03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F93031C4478A100507A03 /* main.m */; };
+		D61F93071C4478A100507A03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F93061C4478A100507A03 /* AppDelegate.m */; };
+		D61F930A1C4478A100507A03 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F93091C4478A100507A03 /* ViewController.m */; };
+		D61F930D1C4478A100507A03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61F930B1C4478A100507A03 /* Main.storyboard */; };
+		D61F930F1C4478A200507A03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D61F930E1C4478A200507A03 /* Assets.xcassets */; };
+		D61F93121C4478A200507A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61F93101C4478A200507A03 /* LaunchScreen.storyboard */; };
+		D61F93231C4478BE00507A03 /* BQSkillTag.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F931B1C4478BE00507A03 /* BQSkillTag.m */; };
+		D61F93241C4478BE00507A03 /* BQSkillTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F931D1C4478BE00507A03 /* BQSkillTagView.m */; };
+		D61F93251C4478BE00507A03 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F931F1C4478BE00507A03 /* NSString+Extension.m */; };
+		D61F93261C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F93221C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m */; };
+		D61F93281C4478C800507A03 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61F93271C4478C800507A03 /* CoreText.framework */; };
+		D61F932B1C4478E900507A03 /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F932A1C4478E900507A03 /* UIColor+Extend.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D61F92FF1C4478A100507A03 /* TPCSkillTagView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TPCSkillTagView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D61F93031C4478A100507A03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D61F93051C4478A100507A03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D61F93061C4478A100507A03 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D61F93081C4478A100507A03 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D61F93091C4478A100507A03 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D61F930C1C4478A100507A03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D61F930E1C4478A200507A03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D61F93111C4478A200507A03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D61F93131C4478A200507A03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D61F931A1C4478BE00507A03 /* BQSkillTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BQSkillTag.h; sourceTree = "<group>"; };
+		D61F931B1C4478BE00507A03 /* BQSkillTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BQSkillTag.m; sourceTree = "<group>"; };
+		D61F931C1C4478BE00507A03 /* BQSkillTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BQSkillTagView.h; sourceTree = "<group>"; };
+		D61F931D1C4478BE00507A03 /* BQSkillTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BQSkillTagView.m; sourceTree = "<group>"; };
+		D61F931E1C4478BE00507A03 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		D61F931F1C4478BE00507A03 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		D61F93211C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
+		D61F93221C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
+		D61F93271C4478C800507A03 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		D61F93291C4478E900507A03 /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extend.h"; sourceTree = "<group>"; };
+		D61F932A1C4478E900507A03 /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extend.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D61F92FC1C4478A100507A03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D61F93281C4478C800507A03 /* CoreText.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D61F92F61C4478A100507A03 = {
+			isa = PBXGroup;
+			children = (
+				D61F93271C4478C800507A03 /* CoreText.framework */,
+				D61F93011C4478A100507A03 /* TPCSkillTagView */,
+				D61F93001C4478A100507A03 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D61F93001C4478A100507A03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D61F92FF1C4478A100507A03 /* TPCSkillTagView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D61F93011C4478A100507A03 /* TPCSkillTagView */ = {
+			isa = PBXGroup;
+			children = (
+				D61F93191C4478BE00507A03 /* BQSkillTagView */,
+				D61F93051C4478A100507A03 /* AppDelegate.h */,
+				D61F93061C4478A100507A03 /* AppDelegate.m */,
+				D61F93081C4478A100507A03 /* ViewController.h */,
+				D61F93091C4478A100507A03 /* ViewController.m */,
+				D61F930B1C4478A100507A03 /* Main.storyboard */,
+				D61F930E1C4478A200507A03 /* Assets.xcassets */,
+				D61F93101C4478A200507A03 /* LaunchScreen.storyboard */,
+				D61F93131C4478A200507A03 /* Info.plist */,
+				D61F93021C4478A100507A03 /* Supporting Files */,
+			);
+			path = TPCSkillTagView;
+			sourceTree = "<group>";
+		};
+		D61F93021C4478A100507A03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D61F93031C4478A100507A03 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D61F93191C4478BE00507A03 /* BQSkillTagView */ = {
+			isa = PBXGroup;
+			children = (
+				D61F93291C4478E900507A03 /* UIColor+Extend.h */,
+				D61F932A1C4478E900507A03 /* UIColor+Extend.m */,
+				D61F931A1C4478BE00507A03 /* BQSkillTag.h */,
+				D61F931B1C4478BE00507A03 /* BQSkillTag.m */,
+				D61F931C1C4478BE00507A03 /* BQSkillTagView.h */,
+				D61F931D1C4478BE00507A03 /* BQSkillTagView.m */,
+				D61F931E1C4478BE00507A03 /* NSString+Extension.h */,
+				D61F931F1C4478BE00507A03 /* NSString+Extension.m */,
+				D61F93201C4478BE00507A03 /* UICollectionViewLeftAlignedLayout */,
+			);
+			path = BQSkillTagView;
+			sourceTree = "<group>";
+		};
+		D61F93201C4478BE00507A03 /* UICollectionViewLeftAlignedLayout */ = {
+			isa = PBXGroup;
+			children = (
+				D61F93211C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.h */,
+				D61F93221C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m */,
+			);
+			path = UICollectionViewLeftAlignedLayout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D61F92FE1C4478A100507A03 /* TPCSkillTagView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D61F93161C4478A200507A03 /* Build configuration list for PBXNativeTarget "TPCSkillTagView" */;
+			buildPhases = (
+				D61F92FB1C4478A100507A03 /* Sources */,
+				D61F92FC1C4478A100507A03 /* Frameworks */,
+				D61F92FD1C4478A100507A03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TPCSkillTagView;
+			productName = TPCSkillTagView;
+			productReference = D61F92FF1C4478A100507A03 /* TPCSkillTagView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D61F92F71C4478A100507A03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = tripleCC;
+				TargetAttributes = {
+					D61F92FE1C4478A100507A03 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = D61F92FA1C4478A100507A03 /* Build configuration list for PBXProject "TPCSkillTagView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D61F92F61C4478A100507A03;
+			productRefGroup = D61F93001C4478A100507A03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D61F92FE1C4478A100507A03 /* TPCSkillTagView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D61F92FD1C4478A100507A03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D61F93121C4478A200507A03 /* LaunchScreen.storyboard in Resources */,
+				D61F930F1C4478A200507A03 /* Assets.xcassets in Resources */,
+				D61F930D1C4478A100507A03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D61F92FB1C4478A100507A03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D61F930A1C4478A100507A03 /* ViewController.m in Sources */,
+				D61F93261C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m in Sources */,
+				D61F93251C4478BE00507A03 /* NSString+Extension.m in Sources */,
+				D61F932B1C4478E900507A03 /* UIColor+Extend.m in Sources */,
+				D61F93231C4478BE00507A03 /* BQSkillTag.m in Sources */,
+				D61F93071C4478A100507A03 /* AppDelegate.m in Sources */,
+				D61F93041C4478A100507A03 /* main.m in Sources */,
+				D61F93241C4478BE00507A03 /* BQSkillTagView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D61F930B1C4478A100507A03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D61F930C1C4478A100507A03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D61F93101C4478A200507A03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D61F93111C4478A200507A03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D61F93141C4478A200507A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D61F93151C4478A200507A03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D61F93171C4478A200507A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TPCSkillTagView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.TPCSkillTagView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D61F93181C4478A200507A03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TPCSkillTagView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.TPCSkillTagView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D61F92FA1C4478A100507A03 /* Build configuration list for PBXProject "TPCSkillTagView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D61F93141C4478A200507A03 /* Debug */,
+				D61F93151C4478A200507A03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D61F93161C4478A200507A03 /* Build configuration list for PBXNativeTarget "TPCSkillTagView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D61F93171C4478A200507A03 /* Debug */,
+				D61F93181C4478A200507A03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D61F92F71C4478A100507A03 /* Project object */;
+}
