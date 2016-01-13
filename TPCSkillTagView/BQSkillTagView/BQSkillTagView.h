@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BQSkillTag.h"
 
 @class BQSkillTagView, BQSkillTag;
 @protocol BQSkillTagViewDelegate <NSObject>
@@ -47,27 +48,44 @@
  */
 @property (assign, nonatomic) UIEdgeInsets contentInset;
 /**
- *  是否允许滚动
- *  嵌入UITableView使用
- */
-@property (assign, nonatomic) BOOL scrollEnabled;
-/**
  *  背景颜色
  */
 @property (strong, nonatomic) UIColor *themeBackgroundColor;
+/**
+ *  通知个数
+ *  赋0隐藏
+ */
+@property (assign, nonatomic) NSInteger notificationCount;
+/**
+ *  通知栏点击回调
+ */
+@property (copy, nonatomic) void (^notificationClickCallBack)(NSInteger notificationCount);
 /**
  *  是否显示添加技能标签按钮
  *  添加在现有技能标签的最后面
  *  可以用标签模型中name长度为0来进行检索
  */
 @property (assign, nonatomic, getter=isShowAddSkillTag) BOOL showAddSkillTag;
+/**
+ *  是否允许滚动
+ *  嵌入UITableView使用
+ */
+@property (assign, nonatomic) BOOL scrollEnabled;
 
+/**
+ *  最后一个cell元素最大Y值
+ *  嵌入UITableView使用
+ */
+@property (assign, nonatomic, readonly) CGFloat skillTagViewHeight;
 /**
  *  更新技能标签
  */
 - (void)updateSkillTag:(BQSkillTag *)skillTag inSection:(NSInteger)section;
 - (void)updateSkillTagsWithIndexPath:(NSIndexPath *)indexPath;
-
+/**
+ *  慎用，使用不当会造成标签闪烁
+ */
+- (void)updateSkillTags;
 /**
  *  添加技能标签
  *
@@ -106,4 +124,13 @@
 @property (strong, nonatomic) BQSkillTag *skillTag;
 @property (assign, nonatomic) BOOL availableSkillType;
 @property (strong, nonatomic) UIImage *maskImage;
+@end
+
+@interface BQSkillTagNotificationView : UIView
+{
+    __weak UIImageView *_arrowImageView;
+    __weak UILabel *_notificationLabel;
+}
+@property (assign, nonatomic) NSInteger notificationCount;
+@property (copy, nonatomic) void(^clickCallBack)(NSInteger notificationCount);
 @end

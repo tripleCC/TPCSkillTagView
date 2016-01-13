@@ -15,10 +15,10 @@
 		D61F93121C4478A200507A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61F93101C4478A200507A03 /* LaunchScreen.storyboard */; };
 		D61F93231C4478BE00507A03 /* BQSkillTag.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F931B1C4478BE00507A03 /* BQSkillTag.m */; };
 		D61F93241C4478BE00507A03 /* BQSkillTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F931D1C4478BE00507A03 /* BQSkillTagView.m */; };
-		D61F93251C4478BE00507A03 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F931F1C4478BE00507A03 /* NSString+Extension.m */; };
 		D61F93261C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F93221C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m */; };
 		D61F93281C4478C800507A03 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61F93271C4478C800507A03 /* CoreText.framework */; };
 		D61F932B1C4478E900507A03 /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F932A1C4478E900507A03 /* UIColor+Extend.m */; };
+		D61F93421C44B14F00507A03 /* NSString+Draw.m in Sources */ = {isa = PBXBuildFile; fileRef = D61F93411C44B14F00507A03 /* NSString+Draw.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,13 +36,13 @@
 		D61F931B1C4478BE00507A03 /* BQSkillTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BQSkillTag.m; sourceTree = "<group>"; };
 		D61F931C1C4478BE00507A03 /* BQSkillTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BQSkillTagView.h; sourceTree = "<group>"; };
 		D61F931D1C4478BE00507A03 /* BQSkillTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BQSkillTagView.m; sourceTree = "<group>"; };
-		D61F931E1C4478BE00507A03 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
-		D61F931F1C4478BE00507A03 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		D61F93211C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
 		D61F93221C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
 		D61F93271C4478C800507A03 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		D61F93291C4478E900507A03 /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extend.h"; sourceTree = "<group>"; };
 		D61F932A1C4478E900507A03 /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extend.m"; sourceTree = "<group>"; };
+		D61F93401C44B14F00507A03 /* NSString+Draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Draw.h"; sourceTree = "<group>"; };
+		D61F93411C44B14F00507A03 /* NSString+Draw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Draw.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +108,8 @@
 				D61F931B1C4478BE00507A03 /* BQSkillTag.m */,
 				D61F931C1C4478BE00507A03 /* BQSkillTagView.h */,
 				D61F931D1C4478BE00507A03 /* BQSkillTagView.m */,
-				D61F931E1C4478BE00507A03 /* NSString+Extension.h */,
-				D61F931F1C4478BE00507A03 /* NSString+Extension.m */,
+				D61F93401C44B14F00507A03 /* NSString+Draw.h */,
+				D61F93411C44B14F00507A03 /* NSString+Draw.m */,
 				D61F93201C4478BE00507A03 /* UICollectionViewLeftAlignedLayout */,
 			);
 			path = BQSkillTagView;
@@ -196,8 +196,8 @@
 			files = (
 				D61F930A1C4478A100507A03 /* ViewController.m in Sources */,
 				D61F93261C4478BE00507A03 /* UICollectionViewLeftAlignedLayout.m in Sources */,
-				D61F93251C4478BE00507A03 /* NSString+Extension.m in Sources */,
 				D61F932B1C4478E900507A03 /* UIColor+Extend.m in Sources */,
+				D61F93421C44B14F00507A03 /* NSString+Draw.m in Sources */,
 				D61F93231C4478BE00507A03 /* BQSkillTag.m in Sources */,
 				D61F93071C4478A100507A03 /* AppDelegate.m in Sources */,
 				D61F93041C4478A100507A03 /* main.m in Sources */,
@@ -312,6 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TPCSkillTagView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.TPCSkillTagView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -323,6 +324,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TPCSkillTagView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.TPCSkillTagView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +350,7 @@
 				D61F93181C4478A200507A03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

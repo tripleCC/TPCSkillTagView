@@ -8,17 +8,18 @@
 
 #import "BQSkillTagView.h"
 #import "UICollectionViewLeftAlignedLayout.h"
-#import "BQSkillTag.h"
 #import "UIColor+Extend.h"
 #import "NSString+Draw.h"
 
 #define BQSkillTagViewHeaderH 30
 #define BQSkillTagViewFooterH 40
+#define BQSkillTagNotificationViewTopOffset 10
 @interface BQSkillTagView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     __weak UICollectionView *_collectionView;
     NSMutableArray<NSMutableArray *> *_allSkillTags;
 }
+@property (weak, nonatomic) BQSkillTagNotificationView *notificationView;
 @property (strong, nonatomic) BQSkillTag *lastSkillTag;;
 @end
 
@@ -41,6 +42,14 @@
     return self;
 }
 
+- (void)sizeToFit {
+    [super sizeToFit];
+    _collectionView.frame = (CGRect){
+        .origin = _collectionView.frame.origin,
+        .size = _collectionView.collectionViewLayout.collectionViewContentSize
+    };
+    self.frame = _collectionView.bounds;
+}
 #pragma mark function
 - (void)removeSkillTag:(BQSkillTag *)skillTag fromSection:(NSInteger)section {
     if (section < 0 || section > _allSkillTags.count - 1) { return; }
@@ -80,6 +89,10 @@
     [_collectionView reloadData];
 }
 #pragma mark getter
+- (CGFloat)skillTagViewHeight {
+    return _collectionView.collectionViewLayout.collectionViewContentSize.height;
+}
+
 - (BQSkillTag *)lastSkillTag {
     if (_lastSkillTag == nil) {
         _lastSkillTag = [[BQSkillTag alloc] init];
@@ -87,8 +100,36 @@
     }
     return _lastSkillTag;
 }
-
+- (BQSkillTagNotificationView *)notificationView {
+    if (_notificationView == nil) {
+        BQSkillTagNotificationView *notificationView = [[BQSkillTagNotificationView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 40)];
+        [_collectionView addSubview:notificationView];
+        _notificationView = notificationView;
+        _notificationView.center = CGPointMake(self.center.x, -_notificationView.bounds.size.height * 0.5- BQSkillTagNotificationViewTopOffset);
+    }
+    
+    return _notificationView;
+}
 #pragma mark setter
+- (void)setNotificationClickCallBack:(void (^)(NSInteger))notificationClickCallBack {
+    _notificationClickCallBack = notificationClickCallBack;
+    self.notificationView.clickCallBack = notificationClickCallBack;
+}
+
+- (void)setNotificationCount:(NSInteger)notificationCount {
+    _notificationCount = notificationCount;
+    UIEdgeInsets insets = _collectionView.contentInset;
+    if (notificationCount > 0) {
+        self.notificationView.notificationCount = notificationCount;
+        insets.top += _notificationView.bounds.size.height + BQSkillTagNotificationViewTopOffset;
+    } else if (_notificationView != nil) {
+        insets.top -= _notificationView.bounds.size.height + BQSkillTagNotificationViewTopOffset;
+    }
+    [UIView animateWithDuration:0.25 animations:^{
+        _collectionView.contentInset = insets;
+    }];
+}
+
 - (void)setAvailableSkillType:(NSString *)availableSkillType {
     _availableSkillType = availableSkillType;
     [_collectionView reloadData];
@@ -246,7 +287,7 @@
     
     return self;
 }
-#pragma mark 懒加载
+#pragma mark getter
 - (UIImageView *)arrowImageView
 {
     if (_arrowImageView == nil) {
@@ -455,4 +496,53 @@
     [self createBackgroundImage];
 }
 
+@end
+
+@implementation BQSkillTagNotificationView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        UILabel *notificationLabel = [[UILabel alloc] init];
+        notificationLabel.backgroundColor = [UIColor clearColor];
+        notificationLabel.textAlignment = NSTextAlignmentCenter;
+        notificationLabel.font = [UIFont systemFontOfSize:14.0];
+        notificationLabel.textColor = [UIColor colorWithHex:0x0f92d7];
+        [self addSubview:notificationLabel];
+        _notificationLabel = notificationLabel;
+        
+        UIImageView *arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell_next_icon_blue"]];
+        arrowImageView.bounds = CGRectMake(0, 0, 15, 15);
+        [self addSubview:arrowImageView];
+        _arrowImageView = arrowImageView;
+        
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(notificationViewOnClicked)];
+        [self addGestureRecognizer:gesture];
+        self.backgroundColor = [UIColor colorWithHex:0xe9e9e9];
+        self.layer.cornerRadius = frame.size.height * 0.5;
+    }
+    return self;
+}
+
+- (void)notificationViewOnClicked {
+    !_clickCallBack ? : _clickCallBack(_notificationCount);
+}
+
+#pragma mark setter
+- (void)setNotificationCount:(NSInteger)notificationCount {
+    _notificationCount = notificationCount;
+    _notificationLabel.text = [NSString stringWithFormat:@"你有%ld条新的技能标签认可!", notificationCount];
+    [_notificationLabel sizeToFit];
+    [self layoutIfNeeded];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _notificationLabel.frame = (CGRect){
+        .origin = { (self.bounds.size.width - _notificationLabel.bounds.size.width) * 0.5,
+            (self.bounds.size.height - _notificationLabel.bounds.size.height) * 0.5 },
+        .size = _notificationLabel.bounds.size
+    };
+    _arrowImageView.center = CGPointMake(CGRectGetMaxX(_notificationLabel.frame) + 5 + _arrowImageView.bounds.size.width * 0.5, _notificationLabel.center.y);
+    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(_arrowImageView.frame) - CGRectGetMinX(_notificationLabel.frame) + 20, self.bounds.size.height);
+}
 @end
